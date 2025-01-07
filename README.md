@@ -1,4 +1,3 @@
-```markdown
 # ComfyUI Quick Start
 
 Easily set up and run ComfyUI on your server.

@@ -1,0 +1,129 @@
+{
+    "animatediff": "https://huggingface.co/guoyww/animatediff",
+    "base-uncased": "https://huggingface.co/bert-base-uncased",
+    "grounding-dino": [
+        "https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/GroundingDINO_SwinT_OGC.cfg.py",
+        "https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth",
+        "https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/GroundingDINO_SwinB.cfg.py",
+        "https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swinb_cogcoor.pth"
+    ],
+    "sam2": [
+        "https://dl.fbaipublicfiles.com/segment_anything_2/072824/sam2_hiera_tiny.pt",
+        "https://dl.fbaipublicfiles.com/segment_anything_2/072824/sam2_hiera_small.pt",
+        "https://dl.fbaipublicfiles.com/segment_anything_2/072824/sam2_hiera_base_plus.pt",
+        "https://dl.fbaipublicfiles.com/segment_anything_2/072824/sam2_hiera_large.pt",
+        "https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_tiny.pt",
+        "https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2.1_hiera_small.pt",
+        "https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2_hiera_base_plus.pt",
+        "https://dl.fbaipublicfiles.com/segment_anything_2/092824/sam2_hiera_large.pt"
+    ]
+    ,
+    "clip_vision": [
+        "https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors",
+        "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/image_encoder/model.safetensors",
+        "https://huggingface.co/Kwai-Kolors/Kolors-IP-Adapter-Plus/resolve/main/image_encoder/pytorch_model.bin"
+    ],
+    "ipadapter": [
+        "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15.safetensors",
+        "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_light_v11.bin",
+        "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus_sd15.safetensors",
+        "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.safetensors",
+        "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-full-face_sd15.safetensors",
+        "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_vit-G.safetensors",
+        "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors",
+        "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors",
+        "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors",
+        "https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl.safetensors",
+        "https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_light.safetensors",
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sd15.bin",
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15.bin",
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait-v11_sd15.bin",
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl.bin",
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl.bin",
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl.bin",
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl_unnorm.bin",
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plus_sd15.bin",
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sd15.bin",
+        "https://huggingface.co/ostris/ip-composition-adapter/resolve/main/ip_plus_composition_sd15.safetensors",
+        "https://huggingface.co/ostris/ip-composition-adapter/resolve/main/ip_plus_composition_sdxl.safetensors",
+        "https://huggingface.co/Kwai-Kolors/Kolors-IP-Adapter-Plus/resolve/main/ip_adapter_plus_general.bin?download=true",
+        "https://huggingface.co/Kwai-Kolors/Kolors-IP-Adapter-FaceID-Plus/resolve/main/ipa-faceid-plus.bin?download=true"
+    ],
+    "loras": [
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sd15_lora.safetensors",
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15_lora.safetensors",
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl_lora.safetensors",
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors",
+        "https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plus_sd15_lora.safetensors"
+    ],
+    "insightface": {
+        "root": 
+        [
+                "https://github.com/deepinsight/insightface/releases/download/v0.7/buffalo_l.zip"
+        ],
+        "models": {
+            "antelopv2":[
+                "https://drive.google.com/file/d/18wEUfMNohBJ4K3Ly5wpTejPfDzp-8fI8/view?usp=sharing"
+            ]
+        }
+    },
+    "ComfyUI_LayerStyle": [
+        "https://huggingface.co/chflame163/ComfyUI_LayerStyle/tree/main"
+    ],
+    "vitmatte": [
+        "https://huggingface.co/hustvl/vitmatte-small-composition-1k/tree/main"
+    ],
+    "checkpoints": [
+        "https://huggingface.co/camenduru/SUPIR/tree/main"
+    ],
+    "instantid": [
+        "https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin?download=true"
+    ],
+    "controlnet": [
+        "https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors?download=true"
+    ],
+    "xlabs": {
+        "controlnets": [
+            "https://huggingface.co/XLabs-AI/flux-controlnet-collections",
+            "https://huggingface.co/XLabs-AI/flux-controlnet-canny"
+        ],
+        "lora": [
+            "https://huggingface.co/XLabs-AI/flux-RealismLora",
+            "https://huggingface.co/XLabs-AI/flux-lora-collection",
+            "https://huggingface.co/XLabs-AI/flux-furry-lora"
+        ],
+        "ip-adapter": [
+            "https://huggingface.co/XLabs-AI/flux-ip-adapter/"
+        ]
+    },
+    "unet": [
+        "https://huggingface.co/city96/FLUX.1-dev-gguf",
+        "https://huggingface.co/city96/FLUX.1-schnell-gguf",
+        "https://huggingface.co/city96/stable-diffusion-3.5-large-gguf",
+        "https://huggingface.co/city96/stable-diffusion-3.5-large-turbo-gguf",
+        "https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf"
+    ],
+    "pulid": [
+        "https://huggingface.co/huchenlei/ipadapter_pulid/resolve/main/ip-adapter_pulid_sdxl_fp16.safetensors?download=true"
+    ],
+    "inpaint": {
+        "root": [
+            "https://github.com/Sanster/models/releases/download/add_big_lama/big-lama.pt",
+            "https://huggingface.co/Acly/MAT/resolve/main/MAT_Places512_G_fp16.safetensors",
+            "https://huggingface.co/lllyasviel/fooocus_inpaint/tree/main"
+        ],
+        "brushnet": [
+            "https://drive.google.com/file/d/1h_WOUK1SyV_YwoXAT7rRO012dI5sm3OE/view?usp=sharing",
+            "https://drive.google.com/file/d/1uLQ55rdcFljdP_9iYGX5ZmJWzXFJast7/view?usp=sharing"
+        ],
+        "brushnet_xl": [
+            "https://drive.google.com/file/d/1e-vXMnlnEGmOr_s5P_hT0Uqp0nPuGFkT/view?usp=sharing",
+            "https://drive.google.com/file/d/1BZc50dQ4GrobOLAknP1pCWQ0npgDK18z/view?usp=sharing",
+            "https://drive.google.com/file/d/1yPhfQ3y60fXURr9_YfQrdE48y68IZjBN/view?usp=sharing"
+        ],
+        "powerpaint": [
+            "https://huggingface.co/JunhaoZhuang/PowerPaint-v2-1/resolve/main/PowerPaint_Brushnet/diffusion_pytorch_model.safetensors",
+            "https://huggingface.co/JunhaoZhuang/PowerPaint-v2-1/resolve/main/PowerPaint_Brushnet/pytorch_model.bin"        
+        ]
+    }
+}

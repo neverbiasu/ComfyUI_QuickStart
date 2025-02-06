@@ -25,7 +25,7 @@ clone_repo() {
     git clone $repo_url
 }
 
-json_file="./custom_nodes_list.json"
+json_file="scripts/custom_nodes_list.json"
 
 for repo_name in $(jq -r 'keys[]' $json_file); do
     repo_url=$(jq -r --arg repo_name "$repo_name" '.[$repo_name]' $json_file)

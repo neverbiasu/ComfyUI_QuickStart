@@ -24,7 +24,7 @@ wget_models() {
     fi
 }
 
-json_file="./models_list.json"
+json_file="scripts/models_list.json"
 
 for model_name in $(jq -r 'keys[]' $json_file); do
     model_url=$(jq -r --arg model_name "$model_name" '.[$model_name]' $json_file)

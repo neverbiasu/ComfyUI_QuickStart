@@ -1,11 +1,12 @@
 #!/bin/bash
 
-cd ComfyUI/custom_nodes
+# Get the absolute path of the script directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cd "${SCRIPT_DIR}/../ComfyUI/custom_nodes"
 
 echo "Checking dependencies..."
 if ! command -v jq &> /dev/null; then
     echo "jq not found. Installing jq..."
-    # 检测包管理器并安装
     if command -v apt-get &> /dev/null; then
         apt-get update && apt-get install -y jq
     elif command -v yum &> /dev/null; then
@@ -18,17 +19,26 @@ if ! command -v jq &> /dev/null; then
     fi
 fi
 
-echo "Downloading custom nodes..."
+# Check if JSON file exists
+json_file="${SCRIPT_DIR}/custom_nodes_list.json"
+if [ ! -f "${json_file}" ]; then
+    echo "Error: File not found ${json_file}"
+    exit 1
+fi
+
+echo "Starting to download custom nodes..."
 
 clone_repo() {
     local repo_url=$1
-    git clone $repo_url
+    if [ -n "${repo_url}" ]; then
+        git clone "${repo_url}" || echo "Warning: Failed to clone ${repo_url}"
+    fi
 }
 
-json_file="scripts/custom_nodes_list.json"
-
-for repo_name in $(jq -r 'keys[]' $json_file); do
-    repo_url=$(jq -r --arg repo_name "$repo_name" '.[$repo_name]' $json_file)
-    echo "Downloading $repo_name from $repo_url..."
-    clone_repo $repo_url
-done
+while read -r repo_name; do
+    if [ -n "${repo_name}" ]; then
+        repo_url=$(jq -r --arg repo_name "${repo_name}" '.[$repo_name]' "${json_file}")
+        echo "Downloading ${repo_name} from ${repo_url}..."
+        clone_repo "${repo_url}"
+    fi
+done < <(jq -r 'keys[]' "${json_file}")

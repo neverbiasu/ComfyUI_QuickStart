@@ -49,10 +49,10 @@ clone_repo() {
     fi
 }
 
-while read -r repo_name; do
+jq -r 'keys[]' "${json_file}" | while read -r repo_name; do
     if [ -n "${repo_name}" ]; then
         repo_url=$(jq -r --arg repo_name "${repo_name}" '.[$repo_name]' "${json_file}")
         echo "Downloading ${repo_name} from ${repo_url}..."
         clone_repo "${repo_url}"
     fi
-done < <(jq -r 'keys[]' "${json_file}")
+done

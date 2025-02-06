@@ -1,8 +1,20 @@
 #!/bin/bash
 
 # Get the absolute path of the script directory
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd "${SCRIPT_DIR}/../ComfyUI/custom_nodes"
+SCRIPT_PATH=$(readlink -f "$0")
+SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
+echo "DEBUG: Script path = ${SCRIPT_PATH}"
+echo "DEBUG: Script dir = ${SCRIPT_DIR}"
+
+# Get the project root directory
+PROJECT_ROOT=$(dirname "${SCRIPT_DIR}")
+
+CUSTOM_NODES_DIR="${PROJECT_ROOT}/ComfyUI/custom_nodes"
+mkdir -p "${CUSTOM_NODES_DIR}"
+cd "${CUSTOM_NODES_DIR}" || exit 1
+echo "DEBUG: Working directory = $(pwd)"
+
+# Check if JSON file exists
 
 echo "Checking dependencies..."
 if ! command -v jq &> /dev/null; then
@@ -19,10 +31,12 @@ if ! command -v jq &> /dev/null; then
     fi
 fi
 
-# Check if JSON file exists
+# Use absolute path to point to JSON file
 json_file="${SCRIPT_DIR}/custom_nodes_list.json"
+echo "DEBUG: JSON file path = ${json_file}"
+
 if [ ! -f "${json_file}" ]; then
-    echo "Error: File not found ${json_file}"
+    echo "错误: 未找到文件 ${json_file}"
     exit 1
 fi
 

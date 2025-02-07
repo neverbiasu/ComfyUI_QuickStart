@@ -1,8 +1,19 @@
 #!/bin/bash
 
 # Get the absolute path of the script directory
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cd "${SCRIPT_DIR}/../ComfyUI/models"
+SCRIPT_PATH=$(readlink -f "$0")
+SCRIPT_DIR=$(dirname "$SCRIPT_PATH")
+echo "DEBUG: Script path = ${SCRIPT_PATH}"
+echo "DEBUG: Script dir = ${SCRIPT_DIR}"
+
+# Get the project root directory
+PROJECT_ROOT=$(dirname "${SCRIPT_DIR}")
+
+# Create models directory
+MODELS_DIR="${PROJECT_ROOT}/ComfyUI/models"
+mkdir -p "${MODELS_DIR}"
+cd "${MODELS_DIR}" || exit 1
+echo "DEBUG: Working directory = $(pwd)"
 
 echo "Downloading models..."
 

@@ -50,16 +50,14 @@ if [ ! -f "${json_file}" ]; then
 fi
 
 # Download models
-while read -r model_name; do
+jq -r 'keys[]' "${json_file}" | while read -r model_name; do
     if [ -n "${model_name}" ]; then
         model_url=$(jq -r --arg model_name "${model_name}" '.[$model_name]' "${json_file}")
         echo "Downloading ${model_name} from ${model_url}..."
         if [[ $model_url == *".git"* ]]; then
             clone_models "${model_url}"
-        elif [[ $model_url == *"huggingface.co"* ]]; then
-            wget_models "${model_url}"
         else
             wget_models "${model_url}"
         fi
     fi
-done < <(jq -r 'keys[]' "${json_file}")
+done

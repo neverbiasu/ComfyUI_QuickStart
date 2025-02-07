@@ -45,13 +45,13 @@ download_value() {
     local value=$2
     local current_path=$3
 
-    # 创建目标目录
-    local target_dir="${MODELS_DIR}/${current_path}"
+    # Create target directory
+    local target_dir="${MODELS_DIR}/${current_path}/${key}"
     mkdir -p "${target_dir}"
     cd "${target_dir}" || exit 1
     echo "DEBUG: Current directory = $(pwd)"
 
-    # 获取值的类型
+    # Get value's type
     local type
     type=$(echo "$value" | jq -r 'type')
     echo "DEBUG: Processing $key of type $type"
@@ -80,7 +80,11 @@ download_value() {
             echo "Processing object ${key}..."
             echo "$value" | jq -r 'keys[]' | while read -r subkey; do
                 subvalue=$(echo "$value" | jq -r --arg k "$subkey" '.[$k]')
-                download_value "$subkey" "$subvalue" "${current_path}/${key}"
+                if [ "$subkey" = "root" ]; then
+                    download_value "$subkey" "$subvalue" "${current_path}"
+                else
+                    download_value "$subkey" "$subvalue" "${current_path}/${key}"
+                fi
             done
             ;;
     esac

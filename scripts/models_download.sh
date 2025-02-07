@@ -46,7 +46,13 @@ download_value() {
     local current_path=$3
 
     # Create target directory
-    local target_dir="${MODELS_DIR}/${current_path}/${key}"
+    local target_dir
+    if [ -z "${current_path}" ]; then
+        target_dir="${MODELS_DIR}/${key}"
+    else
+        target_dir="${MODELS_DIR}/${current_path}/${key}"
+    fi
+    target_dir=$(echo "$target_dir" | sed 's#/\+#/#g')
     mkdir -p "${target_dir}"
     cd "${target_dir}" || exit 1
     echo "DEBUG: Current directory = $(pwd)"

@@ -40,6 +40,52 @@ wget_models() {
     fi
 }
 
+download_value() {
+    local key=$1
+    local value=$2
+    local current_path=$3
+
+    # 创建目标目录
+    local target_dir="${MODELS_DIR}/${current_path}"
+    mkdir -p "${target_dir}"
+    cd "${target_dir}" || exit 1
+    echo "DEBUG: Current directory = $(pwd)"
+
+    # 获取值的类型
+    local type
+    type=$(echo "$value" | jq -r 'type')
+    echo "DEBUG: Processing $key of type $type"
+
+    case $type in
+        "string")
+            echo "Downloading ${key} to ${target_dir}..."
+            if [[ $value == *".git"* ]]; then
+                clone_models "$value"
+            else
+                wget_models "$value"
+            fi
+            ;;
+        "array")
+            echo "Processing array ${key}..."
+            echo "$value" | jq -c '.[]' | while read -r url; do
+                url=$(echo "$url" | tr -d '"')
+                if [[ $url == *".git"* ]]; then
+                    clone_models "$url"
+                else
+                    wget_models "$url"
+                fi
+            done
+            ;;
+        "object")
+            echo "Processing object ${key}..."
+            echo "$value" | jq -r 'keys[]' | while read -r subkey; do
+                subvalue=$(echo "$value" | jq -r --arg k "$subkey" '.[$k]')
+                download_value "$subkey" "$subvalue" "${current_path}/${key}"
+            done
+            ;;
+    esac
+}
+
 # Use absolute path to point to JSON file
 json_file="${SCRIPT_DIR}/models_list.json"
 
@@ -50,14 +96,10 @@ if [ ! -f "${json_file}" ]; then
 fi
 
 # Download models
-jq -r 'keys[]' "${json_file}" | while read -r model_name; do
-    if [ -n "${model_name}" ]; then
-        model_url=$(jq -r --arg model_name "${model_name}" '.[$model_name]' "${json_file}")
-        echo "Downloading ${model_name} from ${model_url}..."
-        if [[ $model_url == *".git"* ]]; then
-            clone_models "${model_url}"
-        else
-            wget_models "${model_url}"
-        fi
+jq -r 'keys[]' "${json_file}" | while read -r key; do
+    if [ -n "${key}" ]; then
+        value=$(jq -r --arg k "$key" '.[$k]' "${json_file}")
+        echo "Processing ${key}..."
+        download_value "$key" "$value" ""
     fi
 done

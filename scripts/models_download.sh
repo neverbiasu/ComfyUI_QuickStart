@@ -53,14 +53,15 @@ download_value() {
         target_dir="${MODELS_DIR}/${current_path}/${key}"
     fi
     target_dir=$(echo "$target_dir" | sed 's#/\+#/#g')
-    mkdir -p "${target_dir}"
+
+    if [ -d "${target_dir}" ]; then
+        echo "Directory ${target_dir} already exists"
+    else
+        mkdir -p "${target_dir}"
+    fi
+    
     cd "${target_dir}" || exit 1
     echo "DEBUG: Current directory = $(pwd)"
-
-    # Get value's type
-    local type
-    type=$(echo "$value" | jq -r 'type')
-    echo "DEBUG: Processing $key of type $type"
 
     case $type in
         "string")

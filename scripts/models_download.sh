@@ -54,13 +54,15 @@ download_value() {
     fi
     target_dir=$(echo "$target_dir" | sed 's#/\+#/#g')
 
-    if [ -d "${target_dir}" ]; then
-        echo "Directory ${target_dir} already exists"
-    else
+    if [ ! -d "${target_dir}" ]; then
         mkdir -p "${target_dir}"
     fi
     
-    cd "${target_dir}" || exit 1
+   if ! cd "${target_dir}"; then
+        echo "Error: Cannot access directory ${target_dir}"
+        return 1
+    fi
+    
     echo "DEBUG: Current directory = $(pwd)"
 
     case $type in

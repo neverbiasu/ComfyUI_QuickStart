@@ -72,7 +72,7 @@ download_value() {
     case $type in
         "string")
             echo "Downloading ${key} to ${target_dir}..."
-            if [[ $value == *".git"* ]]; then
+            if [[ $value == *"/main" || $value == *".git"* ]]; then
                 clone_models "$value"
             else
                 wget_models "$value"
@@ -82,7 +82,7 @@ download_value() {
             echo "Processing array ${key}..."
             echo "$value" | jq -c '.[]' | while read -r url; do
                 url=$(echo "$url" | tr -d '"')
-                if [[ $url == *".git"* ]]; then
+                if [[ $url == *"/main" || $url == *".git"* ]]; then
                     clone_models "$url"
                 else
                     wget_models "$url"

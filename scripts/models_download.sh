@@ -45,6 +45,10 @@ download_value() {
     local value=$2
     local current_path=$3
 
+    local type
+    type=$(echo "$value" | jq -r 'type')
+    echo "DEBUG: Processing $key of type $type"  # 添加调试输出
+
     # Create target directory
     local target_dir
     if [ -z "${current_path}" ]; then

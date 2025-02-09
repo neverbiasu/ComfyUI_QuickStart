@@ -110,7 +110,11 @@
         "root": [
             "https://github.com/Sanster/models/releases/download/add_big_lama/big-lama.pt",
             "https://huggingface.co/Acly/MAT/resolve/main/MAT_Places512_G_fp16.safetensors",
-            "https://huggingface.co/lllyasviel/fooocus_inpaint/tree/main"
+            "https://huggingface.co/lllyasviel/fooocus_inpaint/resolve/main/fooocus_inpaint_head.pth",
+            "https://huggingface.co/lllyasviel/fooocus_inpaint/resolve/main/fooocus_lama.safetensors",
+            "https://huggingface.co/lllyasviel/fooocus_inpaint/resolve/main/inpaint.fooocus.patch",
+            "https://huggingface.co/lllyasviel/fooocus_inpaint/resolve/main/inpaint_v25.fooocus.patch",
+            "https://huggingface.co/lllyasviel/fooocus_inpaint/resolve/main/inpaint_v26.fooocus.patch"
         ],
         "brushnet": [
             "https://drive.google.com/file/d/1h_WOUK1SyV_YwoXAT7rRO012dI5sm3OE/view?usp=sharing",
